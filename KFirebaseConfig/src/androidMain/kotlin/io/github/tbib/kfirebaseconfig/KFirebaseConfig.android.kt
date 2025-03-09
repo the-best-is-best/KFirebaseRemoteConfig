@@ -19,6 +19,7 @@ actual class KFirebaseRemoteConfig {
                 minimumFetchIntervalInSeconds = intervalSeconds.seconds.inWholeSeconds
             }
             remoteConfig.setConfigSettingsAsync(configSettings)
+            remoteConfig.fetchAndActivate()
         }
     }
 

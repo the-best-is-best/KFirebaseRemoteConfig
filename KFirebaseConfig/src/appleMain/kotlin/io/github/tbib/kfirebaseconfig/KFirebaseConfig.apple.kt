@@ -19,6 +19,7 @@ actual class KFirebaseRemoteConfig {
             val settings = FIRRemoteConfigSettings()
             settings.minimumFetchInterval = intervalSeconds.toDouble()
             remoteConfig.configSettings = settings
+            remoteConfig.fetchAndActivateWithCompletionHandler { _, _ -> }
         }
     }
 

@@ -32,7 +32,7 @@ internal fun App() = AppTheme {
     ) {
         ElevatedButton(
             onClick = {
-                println(kFirebaseRemoteConfig.getInt("test"))
+                println(kFirebaseRemoteConfig.getString("test"))
             }
         ) {
             Text("Fetch value")
