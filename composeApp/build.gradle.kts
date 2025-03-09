@@ -6,6 +6,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.application)
+    id("com.google.gms.google-services")
+
 }
 
 kotlin {
@@ -33,6 +35,8 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation(project(":KFirebaseConfig"))
         }
 
         commonTest.dependencies {
