@@ -163,6 +163,7 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 api(libs.kfirebase.core)
                 implementation(libs.kotlinx.coroutines.core)
+                api(libs.kotlinx.datetime)
 
 
                 // Add KMP dependencies here

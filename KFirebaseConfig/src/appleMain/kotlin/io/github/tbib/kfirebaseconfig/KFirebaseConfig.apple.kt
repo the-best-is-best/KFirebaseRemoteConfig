@@ -6,18 +6,19 @@ import io.github.native.kfirebase_config.FIRRemoteConfigFetchStatus
 import io.github.native.kfirebase_config.FIRRemoteConfigSettings
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.suspendCancellableCoroutine
-import platform.Foundation.NSDate
-import platform.Foundation.dateWithTimeIntervalSince1970
-import platform.Foundation.timeIntervalSinceDate
+import kotlinx.datetime.toKotlinInstant
+import kotlin.time.Duration
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 @OptIn(ExperimentalForeignApi::class)
 actual class KFirebaseRemoteConfig {
     actual companion object {
         private val remoteConfig: FIRRemoteConfig = FIRRemoteConfig.remoteConfig()
 
-        actual fun init(interval: Double) {
+        actual fun init(interval: Duration) {
             val settings = FIRRemoteConfigSettings()
-            settings.minimumFetchInterval = interval
+            settings.minimumFetchInterval = interval.toDouble(DurationUnit.SECONDS)
             remoteConfig.configSettings = settings
         }
     }
@@ -58,14 +59,11 @@ actual class KFirebaseRemoteConfig {
             else -> "UNKNOWN"
         }
 
-        val referenceDate = NSDate.dateWithTimeIntervalSince1970(0.0) // 1 يناير 1970
-        val lastFetchTimeMs =
-            ((remoteConfig.lastFetchTime!!.timeIntervalSinceDate(referenceDate)) * 1000).toLong() // ✅ الحل الصحيح
 
         return RemoteConfigInfo(
-            lastFetchTime = lastFetchTimeMs,
+            lastFetchTime = remoteConfig.lastFetchTime?.toKotlinInstant(),
             lastFetchStatus = lastFetchStatus,
-            minimumFetchInterval = (settings.minimumFetchInterval * 1000).toLong()
+            minimumFetchInterval = settings.minimumFetchInterval.toDuration(DurationUnit.SECONDS).inWholeSeconds
         )
 
     }
