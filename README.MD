@@ -23,7 +23,7 @@ KFirebaseRemoteConfig is available on `mavenCentral()`.
 ## Installation
 
 ```kotlin
-implementation("io.github.the-best-is-best:kfirebase-config:1.0.0")
+implementation("io.github.the-best-is-best:kfirebase-config:1.0.0-dev.1")
 ```
 
 ### androidMain
