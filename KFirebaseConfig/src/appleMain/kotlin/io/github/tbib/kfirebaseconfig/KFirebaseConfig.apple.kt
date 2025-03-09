@@ -7,7 +7,6 @@ import io.github.native.kfirebase_config.FIRRemoteConfigSettings
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.toKotlinInstant
-import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 import kotlin.time.toDuration
 
@@ -18,7 +17,7 @@ actual class KFirebaseRemoteConfig {
 
         actual fun init(intervalSeconds: Int) {
             val settings = FIRRemoteConfigSettings()
-            settings.minimumFetchInterval = intervalSeconds.seconds.toDouble(DurationUnit.SECONDS)
+            settings.minimumFetchInterval = intervalSeconds.toDouble()
             remoteConfig.configSettings = settings
         }
     }
