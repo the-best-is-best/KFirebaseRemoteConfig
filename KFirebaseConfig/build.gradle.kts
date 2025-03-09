@@ -12,7 +12,7 @@ plugins {
 extra["packageNameSpace"] = "io.github.kfirebase_config"
 extra["groupId"] = "io.github.the-best-is-best"
 extra["artifactId"] = "kfirebase-config"
-extra["version"] = "1.1.2-dev.1"
+extra["version"] = "1.0.0-dev.1"
 extra["packageName"] = "KFirebaseConfig"
 extra["packageUrl"] = "https://github.com/the-best-is-best/KFirebaseRemoteConfig"
 extra["packageDescription"] =

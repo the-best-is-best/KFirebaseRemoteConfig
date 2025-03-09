@@ -1,30 +1,76 @@
-# Compose Multiplatform Application
+<h1 align="center">KFirebaseRemoteConfig</h1><br>
+<div align="center">
+<a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+<a href="https://android-arsenal.com/api?level=21" rel="nofollow">
+    <img alt="API" src="https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=flat" style="max-width: 100%;">
+</a>
+  <img src="https://img.shields.io/badge/Platform-Android-brightgreen.svg?logo=android" alt="Badge Android" />
+  <img src="https://img.shields.io/badge/iOS-13%2B-blue.svg?logo=apple" alt="iOS 13+ Badge" />
 
-## Before running!
+<a href="https://github.com/the-best-is-best/"><img alt="Profile" src="https://img.shields.io/badge/github-%23181717.svg?&style=for-the-badge&logo=github&logoColor=white" height="20"/></a>
+</div>
 
-- check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
-- install JDK 17 or higher on your machine
-- add `local.properties` file to the project root and set a path to Android SDK there
+<br>
 
-### Android
+### KFirebaseRemoteConfig is a Kotlin Multiplatform (KMP) library designed to provide seamless integration with Firebase Remote Config across both Android and Apple platforms. This package allows developers to manage remote configuration parameters efficiently using a unified API without duplicating code for each platform.
 
-To run the application on android device/emulator:
+<hr>
 
-- open project in Android Studio and run imported android run configuration
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.the-best-is-best/kfirebase-config)](https://central.sonatype.com/artifact/io.github.the-best-is-best/kfirebase-config)
 
-To build the application bundle:
+KFirebaseRemoteConfig is available on `mavenCentral()`.
 
-- run `./gradlew :composeApp:assembleDebug`
-- find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
-  Run android UI tests on the connected device: `./gradlew :composeApp:connectedDebugAndroidTest`
+## Installation
 
-### iOS
+```kotlin
+implementation("io.github.the-best-is-best:kfirebase-config:1.0.0")
+```
 
-To run the application on iPhone device/simulator:
+### androidMain
 
-- Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
-- Or
-  use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)
-  for Android Studio
-  Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
+```kotlin
+KFirebaseRemoteConfig.init(intervalSeconds = 3600)
+```
+
+### iOS (Using Swift Package Manager - SPM)
+
+Make sure to add Firebase as a dependency using Swift Package Manager (SPM).
+
+1. Open your Xcode project.
+2. Navigate to `File > Add Packages...`.
+3. Enter Firebase repository URL: `https://github.com/firebase/firebase-ios-sdk`
+4. Choose `FirebaseRemoteConfig` and add it to your project.
+
+### iosApp
+
+```swift
+import Firebase
+
+FirebaseApp.configure()
+```
+
+## Usage
+
+```kotlin
+val remoteConfig = KFirebaseRemoteConfig()
+val value = remoteConfig.getString("feature_flag")
+```
+
+## API
+
+```kotlin
+package io.github.kfirebase_remoteconfig
+
+expect class KFirebaseRemoteConfig() {
+    companion object {
+        fun init(intervalSeconds: Int)
+    }
+
+    fun getInfo(): RemoteConfigInfo
+    suspend fun fetchAndActivate(): Boolean
+    fun getString(key: String): String
+    fun getBoolean(key: String): Boolean
+    fun getInt(key: String): Int
+}
+```
 
