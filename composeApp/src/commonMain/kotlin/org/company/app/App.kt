@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -18,7 +20,7 @@ import kotlin.time.Duration.Companion.hours
 @Composable
 internal fun App() = AppTheme {
     LaunchedEffect(Unit) {
-        KFirebaseRemoteConfig.init(1.hours)
+        KFirebaseRemoteConfig.init(12.hours.inWholeSeconds.toInt())
     }
     val kFirebaseRemoteConfig = KFirebaseRemoteConfig()
     Column(
@@ -28,6 +30,12 @@ internal fun App() = AppTheme {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        ElevatedButton(
+            onClick = {
+                println(kFirebaseRemoteConfig.getInt("test"))
+            }
+        ) {
+            Text("Fetch value")
+        }
     }
 }
