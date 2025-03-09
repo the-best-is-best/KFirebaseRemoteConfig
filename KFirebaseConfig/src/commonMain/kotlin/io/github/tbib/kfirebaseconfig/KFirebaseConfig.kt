@@ -1,11 +1,9 @@
 package io.github.tbib.kfirebaseconfig
 
-import kotlin.time.Duration
-
 
 expect class KFirebaseRemoteConfig() {
     companion object {
-        fun init(interval: Duration)
+        fun init(intervalSeconds: Int)
     }
 
     fun getInfo(): RemoteConfigInfo

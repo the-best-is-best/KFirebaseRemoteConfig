@@ -6,16 +6,16 @@ import com.google.firebase.remoteconfig.ktx.remoteConfig
 import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import kotlinx.coroutines.tasks.await
 import kotlinx.datetime.Instant
-import kotlin.time.Duration
 
 actual class KFirebaseRemoteConfig {
     private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
 
     actual companion object {
-        actual fun init(interval: Duration) {
+        actual fun init(intervalSeconds: Int) {
             val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
             val configSettings = remoteConfigSettings {
-                minimumFetchIntervalInSeconds = interval.inWholeSeconds
+                minimumFetchIntervalInSeconds =
+                    Instant.fromEpochSeconds(intervalSeconds.toLong()).toEpochMilliseconds() / 1000
             }
             remoteConfig.setConfigSettingsAsync(configSettings)
         }
