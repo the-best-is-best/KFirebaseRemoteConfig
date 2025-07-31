@@ -1,12 +1,13 @@
 package io.github.tbib.kfirebaseconfig
 
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfig
-import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
+import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.remoteConfigSettings
 import kotlinx.coroutines.tasks.await
-import kotlinx.datetime.Instant
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
 actual class KFirebaseRemoteConfig {
     private val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
@@ -41,6 +42,7 @@ actual class KFirebaseRemoteConfig {
         return remoteConfig.getLong(key).toInt()
     }
 
+    @OptIn(ExperimentalTime::class)
     actual fun getInfo(): RemoteConfigInfo {
         val settings = remoteConfig.info.configSettings
         val lastFetchStatus = when (remoteConfig.info.lastFetchStatus) {
