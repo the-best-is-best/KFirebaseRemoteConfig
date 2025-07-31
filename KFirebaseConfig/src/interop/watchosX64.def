@@ -1,3 +1,0 @@
-language = Objective-C
-package = io.github.native.kfirebase_config
-headers = /Users/michelleraouf/Desktop/kmm/KFirebaseRemoteConfig/KFirebaseConfig/src/interop/libs/watchos-arm64_arm64_32/FirebaseRemoteConfig.framework/Headers/FirebaseRemoteConfig.h

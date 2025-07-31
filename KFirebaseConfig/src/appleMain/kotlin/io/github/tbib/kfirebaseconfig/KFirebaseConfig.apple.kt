@@ -8,6 +8,7 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.datetime.toKotlinInstant
 import kotlin.time.DurationUnit
+import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
 @OptIn(ExperimentalForeignApi::class)
@@ -50,6 +51,7 @@ actual class KFirebaseRemoteConfig {
     }
 
 
+    @OptIn(ExperimentalTime::class)
     actual fun getInfo(): RemoteConfigInfo {
         val settings = remoteConfig.configSettings
         val lastFetchStatus = when (remoteConfig.lastFetchStatus) {
