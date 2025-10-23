@@ -12,10 +12,7 @@ plugins {
 
 kotlin {
     jvmToolchain(17)
-    androidTarget {
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-    }
+    androidTarget()
 
     listOf(
         iosX64(),
@@ -55,11 +52,11 @@ kotlin {
 
 android {
     namespace = "org.company.app"
-    compileSdk = libs.v
+    compileSdk = 23
 
     defaultConfig {
-        minSdk = 21
-        targetSdk = 35
+        minSdk = 23
+        targetSdk = 36
 
         applicationId = "org.company.app.androidApp"
         versionCode = 1

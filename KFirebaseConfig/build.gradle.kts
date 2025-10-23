@@ -11,7 +11,7 @@ plugins {
 extra["packageNameSpace"] = "io.github.kfirebase_config"
 extra["groupId"] = "io.github.the-best-is-best"
 extra["artifactId"] = "kfirebase-config"
-extra["version"] = "2.0.0-dev.1"
+extra["version"] = "2.1.0"
 extra["packageName"] = "KFirebaseConfig"
 extra["packageUrl"] = "https://github.com/the-best-is-best/KFirebaseRemoteConfig"
 extra["packageDescription"] =
@@ -80,7 +80,7 @@ kotlin {
     androidLibrary {
         namespace = "io.github.tbib.kfirebaseconfig"
         compileSdk = 36
-        minSdk = 21
+        minSdk = 23
 
         withHostTestBuilder {
         }
