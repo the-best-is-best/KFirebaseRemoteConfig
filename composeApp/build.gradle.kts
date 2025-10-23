@@ -55,7 +55,7 @@ kotlin {
 
 android {
     namespace = "org.company.app"
-    compileSdk = 35
+    compileSdk = libs.v
 
     defaultConfig {
         minSdk = 21
