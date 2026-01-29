@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
@@ -27,23 +28,17 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.runtime)
+            implementation(libs.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.components.resources)
+            implementation(libs.ui.tooling.preview)
 
             implementation(project(":KFirebaseConfig"))
         }
 
-        commonTest.dependencies {
-            implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
-            implementation(compose.uiTest)
-        }
-
         androidMain.dependencies {
-            implementation(compose.uiTooling)
+            implementation(libs.ui.tooling)
             implementation(libs.androidx.activityCompose)
         }
 
@@ -52,7 +47,7 @@ kotlin {
 
 android {
     namespace = "org.company.app"
-    compileSdk = 23
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 23
@@ -64,10 +59,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
-//https://developer.android.com/develop/ui/compose/testing#setup
-dependencies {
-    androidTestImplementation(libs.androidx.uitest.junit4)
-    debugImplementation(libs.androidx.uitest.testManifest)
-}

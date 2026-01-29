@@ -21,18 +21,14 @@
 /// The Firebase Remote Config service default namespace, to be used if the API method does not
 /// specify a different namespace. Use the default namespace if configuring from the Google Firebase
 /// service.
-extern NSString *const _Nonnull
-
-FIRNamespaceGoogleMobilePlatform NS_SWIFT_NAME(
-        NamespaceGoogleMobilePlatform);
+extern NSString *const _Nonnull FIRNamespaceGoogleMobilePlatform NS_SWIFT_NAME(
+    NamespaceGoogleMobilePlatform);
 
 /// Key used to manage throttling in NSError user info when the refreshing of Remote Config
 /// parameter values (data) is throttled. The value of this key is the elapsed time since 1970,
 /// measured in seconds.
-extern NSString *const _Nonnull
-
-FIRRemoteConfigThrottledEndTimeInSecondsKey NS_SWIFT_NAME(
-        RemoteConfigThrottledEndTimeInSecondsKey);
+extern NSString *const _Nonnull FIRRemoteConfigThrottledEndTimeInSecondsKey NS_SWIFT_NAME(
+    RemoteConfigThrottledEndTimeInSecondsKey);
 
 /**
  * Listener registration returned by `addOnConfigUpdateListener`. Calling its method `remove` stops
@@ -53,93 +49,75 @@ NS_SWIFT_NAME(ConfigUpdateListenerRegistration)
 @end
 
 /// Indicates whether updated data was successfully fetched.
-typedef NS_ENUM(NSInteger, FIRRemoteConfigFetchStatus
-) {
-/// Config has never been fetched.
-FIRRemoteConfigFetchStatusNoFetchYet,
-/// Config fetch succeeded.
-FIRRemoteConfigFetchStatusSuccess,
-/// Config fetch failed.
-FIRRemoteConfigFetchStatusFailure,
-/// Config fetch was throttled.
-FIRRemoteConfigFetchStatusThrottled,
-}
-NS_SWIFT_NAME(RemoteConfigFetchStatus);
+typedef NS_ENUM(NSInteger, FIRRemoteConfigFetchStatus) {
+  /// Config has never been fetched.
+  FIRRemoteConfigFetchStatusNoFetchYet,
+  /// Config fetch succeeded.
+  FIRRemoteConfigFetchStatusSuccess,
+  /// Config fetch failed.
+  FIRRemoteConfigFetchStatusFailure,
+  /// Config fetch was throttled.
+  FIRRemoteConfigFetchStatusThrottled,
+} NS_SWIFT_NAME(RemoteConfigFetchStatus);
 
 /// Indicates whether updated data was successfully fetched and activated.
-typedef NS_ENUM(NSInteger, FIRRemoteConfigFetchAndActivateStatus
-) {
-/// The remote fetch succeeded and fetched data was activated.
-FIRRemoteConfigFetchAndActivateStatusSuccessFetchedFromRemote,
-/// The fetch and activate succeeded from already fetched but yet unexpired config data. You can
-/// control this using minimumFetchInterval property in FIRRemoteConfigSettings.
-FIRRemoteConfigFetchAndActivateStatusSuccessUsingPreFetchedData,
-/// The fetch and activate failed.
-FIRRemoteConfigFetchAndActivateStatusError
-}
-NS_SWIFT_NAME(RemoteConfigFetchAndActivateStatus);
+typedef NS_ENUM(NSInteger, FIRRemoteConfigFetchAndActivateStatus) {
+  /// The remote fetch succeeded and fetched data was activated.
+  FIRRemoteConfigFetchAndActivateStatusSuccessFetchedFromRemote,
+  /// The fetch and activate succeeded from already fetched but yet unexpired config data. You can
+  /// control this using minimumFetchInterval property in FIRRemoteConfigSettings.
+  FIRRemoteConfigFetchAndActivateStatusSuccessUsingPreFetchedData,
+  /// The fetch and activate failed.
+  FIRRemoteConfigFetchAndActivateStatusError
+} NS_SWIFT_NAME(RemoteConfigFetchAndActivateStatus);
 
 /// Remote Config error domain that handles errors when fetching data from the service.
-extern NSString *const _Nonnull
-
-FIRRemoteConfigErrorDomain NS_SWIFT_NAME(RemoteConfigErrorDomain);
+extern NSString *const _Nonnull FIRRemoteConfigErrorDomain NS_SWIFT_NAME(RemoteConfigErrorDomain);
 /// Firebase Remote Config service fetch error.
-typedef NS_ERROR_ENUM(FIRRemoteConfigErrorDomain, FIRRemoteConfigError
-){
-/// Unknown or no error.
-FIRRemoteConfigErrorUnknown = 8001,
-/// Frequency of fetch requests exceeds throttled limit.
-FIRRemoteConfigErrorThrottled = 8002,
-/// Internal error that covers all internal HTTP errors.
-FIRRemoteConfigErrorInternalError = 8003,
-}
-NS_SWIFT_NAME(RemoteConfigError);
+typedef NS_ERROR_ENUM(FIRRemoteConfigErrorDomain, FIRRemoteConfigError){
+    /// Unknown or no error.
+    FIRRemoteConfigErrorUnknown = 8001,
+    /// Frequency of fetch requests exceeds throttled limit.
+    FIRRemoteConfigErrorThrottled = 8002,
+    /// Internal error that covers all internal HTTP errors.
+    FIRRemoteConfigErrorInternalError = 8003,
+} NS_SWIFT_NAME(RemoteConfigError);
 
 /// Remote Config error domain that handles errors for the real-time config update service.
-extern NSString *const _Nonnull
-
-FIRRemoteConfigUpdateErrorDomain NS_SWIFT_NAME(RemoteConfigUpdateErrorDomain);
+extern NSString *const _Nonnull FIRRemoteConfigUpdateErrorDomain NS_SWIFT_NAME(RemoteConfigUpdateErrorDomain);
 /// Firebase Remote Config real-time config update service error.
-typedef NS_ERROR_ENUM(FIRRemoteConfigUpdateErrorDomain, FIRRemoteConfigUpdateError
-){
-/// Unable to make a connection to the Remote Config backend.
-FIRRemoteConfigUpdateErrorStreamError = 8001,
-/// Unable to fetch the latest version of the config.
-FIRRemoteConfigUpdateErrorNotFetched = 8002,
-/// The ConfigUpdate message was unparsable.
-FIRRemoteConfigUpdateErrorMessageInvalid = 8003,
-/// The Remote Config real-time config update service is unavailable.
-FIRRemoteConfigUpdateErrorUnavailable = 8004,
-}
-NS_SWIFT_NAME(RemoteConfigUpdateError);
+typedef NS_ERROR_ENUM(FIRRemoteConfigUpdateErrorDomain, FIRRemoteConfigUpdateError){
+    /// Unable to make a connection to the Remote Config backend.
+    FIRRemoteConfigUpdateErrorStreamError = 8001,
+    /// Unable to fetch the latest version of the config.
+    FIRRemoteConfigUpdateErrorNotFetched = 8002,
+    /// The ConfigUpdate message was unparsable.
+    FIRRemoteConfigUpdateErrorMessageInvalid = 8003,
+    /// The Remote Config real-time config update service is unavailable.
+    FIRRemoteConfigUpdateErrorUnavailable = 8004,
+} NS_SWIFT_NAME(RemoteConfigUpdateError);
 
 /// Error domain for custom signals errors.
-extern NSString *const _Nonnull
-
-FIRRemoteConfigCustomSignalsErrorDomain NS_SWIFT_NAME(RemoteConfigCustomSignalsErrorDomain);
+extern NSString *const _Nonnull FIRRemoteConfigCustomSignalsErrorDomain NS_SWIFT_NAME(RemoteConfigCustomSignalsErrorDomain);
 
 /// Firebase Remote Config custom signals error.
-typedef NS_ERROR_ENUM(FIRRemoteConfigCustomSignalsErrorDomain, FIRRemoteConfigCustomSignalsError
-){
-/// Unknown error.
-FIRRemoteConfigCustomSignalsErrorUnknown = 8101,
-/// Invalid value type in the custom signals dictionary.
-FIRRemoteConfigCustomSignalsErrorInvalidValueType = 8102,
-/// Limit exceeded for key length, value length, or number of signals.
-FIRRemoteConfigCustomSignalsErrorLimitExceeded = 8103,
-}
-NS_SWIFT_NAME(RemoteConfigCustomSignalsError);
+typedef NS_ERROR_ENUM(FIRRemoteConfigCustomSignalsErrorDomain, FIRRemoteConfigCustomSignalsError){
+    /// Unknown error.
+    FIRRemoteConfigCustomSignalsErrorUnknown = 8101,
+    /// Invalid value type in the custom signals dictionary.
+    FIRRemoteConfigCustomSignalsErrorInvalidValueType = 8102,
+    /// Limit exceeded for key length, value length, or number of signals.
+    FIRRemoteConfigCustomSignalsErrorLimitExceeded = 8103,
+} NS_SWIFT_NAME(RemoteConfigCustomSignalsError);
 
 /// Enumerated value that indicates the source of Remote Config data. Data can come from
 /// the Remote Config service, the DefaultConfig that is available when the app is first installed,
 /// or a static initialized value if data is not available from the service or DefaultConfig.
-typedef NS_ENUM(NSInteger, FIRRemoteConfigSource
-) {
-FIRRemoteConfigSourceRemote,   ///< The data source is the Remote Config service.
-FIRRemoteConfigSourceDefault,  ///< The data source is the DefaultConfig defined for this app.
-FIRRemoteConfigSourceStatic,   ///< The data doesn't exist, return a static initialized value.
-}
-NS_SWIFT_NAME(RemoteConfigSource);
+typedef NS_ENUM(NSInteger, FIRRemoteConfigSource) {
+  FIRRemoteConfigSourceRemote,   ///< The data source is the Remote Config service.
+  FIRRemoteConfigSourceDefault,  ///< The data source is the DefaultConfig defined for this app.
+  FIRRemoteConfigSourceStatic,   ///< The data doesn't exist, return a static initialized value.
+} NS_SWIFT_NAME(RemoteConfigSource);
 
 /// Completion handler invoked by fetch methods when they get a response from the server.
 ///
@@ -147,30 +125,26 @@ NS_SWIFT_NAME(RemoteConfigSource);
 /// @param error  Error message on failure.
 typedef void (^FIRRemoteConfigFetchCompletion)(FIRRemoteConfigFetchStatus status,
                                                NSError *_Nullable error)
-
-NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
+    NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
 /// Completion handler invoked by activate method upon completion.
 /// @param error  Error message on failure. Nil if activation was successful.
 typedef void (^FIRRemoteConfigActivateCompletion)(NSError *_Nullable error)
-
-NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
+    NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
 /// Completion handler invoked upon completion of Remote Config initialization.
 ///
 /// @param initializationError nil if initialization succeeded.
 typedef void (^FIRRemoteConfigInitializationCompletion)(NSError *_Nullable initializationError)
-
-NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
+    NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
 /// Completion handler invoked by the fetchAndActivate method. Used to convey status of fetch and,
 /// if successful, resultant activate call
 /// @param status Config fetching status.
 /// @param error  Error message on failure of config fetch
 typedef void (^FIRRemoteConfigFetchAndActivateCompletion)(
-        FIRRemoteConfigFetchAndActivateStatus status, NSError *_Nullable error)
-
-NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
+    FIRRemoteConfigFetchAndActivateStatus status, NSError *_Nullable error)
+    NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
 #pragma mark - FIRRemoteConfigValue
 /// This class provides a wrapper for Remote Config parameter values, with methods to get parameter
@@ -187,8 +161,7 @@ NS_SWIFT_NAME(RemoteConfigValue)
 @property(nonatomic, readonly) BOOL boolValue;
 /// Gets a foundation object (NSDictionary / NSArray) by parsing the value as JSON. This method uses
 /// NSJSONSerialization's JSONObjectWithData method with an options value of 0.
-@property(nonatomic, readonly, nullable) id JSONValue
-NS_SWIFT_NAME(jsonValue);
+@property(nonatomic, readonly, nullable) id JSONValue NS_SWIFT_NAME(jsonValue);
 /// Identifies the source of the fetched value.
 @property(nonatomic, readonly) FIRRemoteConfigSource source;
 @end
@@ -243,11 +216,7 @@ NS_SWIFT_NAME(RemoteConfig)
 /// Remote Config server until they are copied to the Active Config by calling `activate()`. When
 /// you fetch values from the Remote Config server using the default Firebase app, you should use
 /// this class method to create and reuse a shared instance of `RemoteConfig`.
-+ (nonnull FIRRemoteConfig
-
-*)
-
-remoteConfig NS_SWIFT_NAME(remoteConfig());
++ (nonnull FIRRemoteConfig *)remoteConfig NS_SWIFT_NAME(remoteConfig());
 
 /// Returns the `RemoteConfig` instance for your (non-default) Firebase appID. Note that Firebase
 /// analytics does not work for non-default app instances. This singleton object contains the
@@ -256,16 +225,8 @@ remoteConfig NS_SWIFT_NAME(remoteConfig());
 /// they are copied to the Active Config by calling `activate())`. When you fetch values
 /// from the Remote Config Server using the non-default Firebase app, you should use this
 /// class method to create and reuse shared instance of `RemoteConfig`.
-+ (nonnull FIRRemoteConfig
-
-*)remoteConfigWithApp:(
-nonnull FIRApp
-*)
-
-app
-NS_SWIFT_NAME(remoteConfig(app
-
-:));
++ (nonnull FIRRemoteConfig *)remoteConfigWithApp:(nonnull FIRApp *)app
+    NS_SWIFT_NAME(remoteConfig(app:));
 
 /// Unavailable. Use +remoteConfig instead.
 - (nonnull instancetype)init __attribute__((unavailable("Use +remoteConfig instead.")));
@@ -279,12 +240,7 @@ NS_SWIFT_NAME(remoteConfig(app
 /// Ensures initialization is complete and clients can begin querying for Remote Config values.
 /// @param completionHandler Initialization complete callback with error parameter.
 - (void)ensureInitializedWithCompletionHandler:
-        (void (^_Nonnull)
-
-(
-NSError *_Nullable
-initializationError))
-completionHandler;
+    (void (^_Nonnull)(NSError *_Nullable initializationError))completionHandler;
 #endif
 
 #pragma mark - Fetch
@@ -314,15 +270,8 @@ completionHandler;
 /// and avoid calling this method again.
 ///
 /// @param completionHandler Fetch operation callback with status and error parameters.
-- (void)fetchWithCompletionHandler:(void (^_Nullable)
-
-(
-FIRRemoteConfigFetchStatus status,
-        NSError
-*
-_Nullable error
-))
-completionHandler;
+- (void)fetchWithCompletionHandler:(void (^_Nullable)(FIRRemoteConfigFetchStatus status,
+                                                      NSError *_Nullable error))completionHandler;
 #endif
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 180000)
@@ -358,15 +307,8 @@ completionHandler;
 /// seconds. Setting a value of 0 seconds will force a fetch to the backend.
 /// @param completionHandler   Fetch operation callback with status and error parameters.
 - (void)fetchWithExpirationDuration:(NSTimeInterval)expirationDuration
-        completionHandler:(void (^_Nullable)
-
-(
-FIRRemoteConfigFetchStatus status,
-        NSError
-*
-_Nullable error
-))
-completionHandler;
+                  completionHandler:(void (^_Nullable)(FIRRemoteConfigFetchStatus status,
+                                                       NSError *_Nullable error))completionHandler;
 #endif
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 180000)
@@ -395,15 +337,8 @@ completionHandler;
 ///
 /// @param completionHandler Fetch operation callback with status and error parameters.
 - (void)fetchAndActivateWithCompletionHandler:
-        (void (^_Nullable)
-
-(
-FIRRemoteConfigFetchAndActivateStatus status,
-        NSError
-*
-_Nullable error
-))
-completionHandler;
+    (void (^_Nullable)(FIRRemoteConfigFetchAndActivateStatus status,
+                       NSError *_Nullable error))completionHandler;
 #endif
 
 #pragma mark - Apply
@@ -418,15 +353,8 @@ completionHandler;
 /// Applies Fetched Config data to the Active Config, causing updates to the behavior and appearance
 /// of the app to take effect (depending on how config data is used in the app).
 /// @param completion Activate operation callback with changed and error parameters.
-- (void)activateWithCompletion:(void (^_Nullable)
-
-(
-BOOL changed,
-        NSError
-*
-_Nullable error
-))
-completion;
+- (void)activateWithCompletion:(void (^_Nullable)(BOOL changed,
+                                                  NSError *_Nullable error))completion;
 #endif
 
 #pragma mark - Get Config
@@ -436,43 +364,23 @@ completion;
 ///     let value = config["yourKey"]
 ///     let boolValue = value.boolValue
 ///     let number = config["yourKey"].numberValue
-- (nonnull FIRRemoteConfigValue
-
-*)objectForKeyedSubscript:(
-nonnull NSString
-*)
-key;
+- (nonnull FIRRemoteConfigValue *)objectForKeyedSubscript:(nonnull NSString *)key;
 
 /// Gets the config value.
 /// @param key Config key.
-- (nonnull FIRRemoteConfigValue
-
-*)configValueForKey:(
-nullable NSString
-*)
-key;
+- (nonnull FIRRemoteConfigValue *)configValueForKey:(nullable NSString *)key;
 
 /// Gets the config value of a given source from the default namespace.
 /// @param key              Config key.
 /// @param source           Config value source.
-- (nonnull FIRRemoteConfigValue
-
-*)configValueForKey:(
-nullable NSString
-*)
-key
-        source
-:(FIRRemoteConfigSource)
-source;
+- (nonnull FIRRemoteConfigValue *)configValueForKey:(nullable NSString *)key
+                                             source:(FIRRemoteConfigSource)source;
 
 /// Gets all the parameter keys of a given source from the default namespace.
 ///
 /// @param source           The config data source.
 /// @return                 An array of keys under the given source.
-- (nonnull NSArray
-
-<NSString *> *)allKeysFromSource:(FIRRemoteConfigSource)
-source;
+- (nonnull NSArray<NSString *> *)allKeysFromSource:(FIRRemoteConfigSource)source;
 
 /// Returns the set of parameter keys that start with the given prefix, from the default namespace
 ///                         in the active config.
@@ -480,46 +388,27 @@ source;
 /// @param prefix           The key prefix to look for. If prefix is nil or empty, returns all the
 ///                         keys.
 /// @return                 The set of parameter keys that start with the specified prefix.
-- (nonnull NSSet
-
-<NSString *> *)keysWithPrefix:(
-nullable NSString
-*)
-prefix;
+- (nonnull NSSet<NSString *> *)keysWithPrefix:(nullable NSString *)prefix;
 
 #pragma mark - Defaults
 /// Sets config defaults for parameter keys and values in the default namespace config.
 /// @param defaults         A dictionary mapping a NSString * key to a NSObject * value.
-- (void)setDefaults:(nullable NSDictionary
-
-<NSString *, NSObject *> *)
-defaults;
+- (void)setDefaults:(nullable NSDictionary<NSString *, NSObject *> *)defaults;
 
 /// Sets default configs from plist for default namespace.
 ///
 /// @param fileName The plist file name, with no file name extension. For example, if the plist file
 ///                 is named `defaultSamples.plist`:
 ///                 `RemoteConfig.remoteConfig().setDefaults(fromPlist: "defaultSamples")`
-- (void)setDefaultsFromPlistFileName:(nullable NSString
-
-*)
-
-fileName
-NS_SWIFT_NAME(setDefaults(fromPlist
-
-:));
+- (void)setDefaultsFromPlistFileName:(nullable NSString *)fileName
+    NS_SWIFT_NAME(setDefaults(fromPlist:));
 
 /// Returns the default value of a given key from the default config.
 ///
 /// @param key              The parameter key of default config.
 /// @return                 Returns the default value of the specified key. Returns
 ///                         nil if the key doesn't exist in the default config.
-- (nullable FIRRemoteConfigValue
-
-*)defaultValueForKey:(
-nullable NSString
-*)
-key;
+- (nullable FIRRemoteConfigValue *)defaultValueForKey:(nullable NSString *)key;
 
 #pragma mark - Real-time Config Updates
 
@@ -531,8 +420,7 @@ key;
 /// @param error  Error message on failure.
 typedef void (^FIRRemoteConfigUpdateCompletion)(FIRRemoteConfigUpdate *_Nullable configUpdate,
                                                 NSError *_Nullable error)
-
-NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
+    NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 180000)
 /// Start listening for real-time config updates from the Remote Config backend and automatically
@@ -568,25 +456,12 @@ NS_SWIFT_UNAVAILABLE("Use Swift's closure syntax instead.");
 /// @return              Returns a registration representing the listener. The registration contains
 /// a remove method, which can be used to stop receiving updates for the provided listener.
 - (FIRConfigUpdateListenerRegistration *_Nonnull)addOnConfigUpdateListener:
-        (FIRRemoteConfigUpdateCompletion _Nonnull)listener
-NS_SWIFT_NAME
-
-(
-addOnConfigUpdateListener(remoteConfigUpdateCompletion
-:));
+    (FIRRemoteConfigUpdateCompletion _Nonnull)listener
+    NS_SWIFT_NAME(addOnConfigUpdateListener(remoteConfigUpdateCompletion:));
 #endif
 
-- (void)setCustomSignals:(nonnull NSDictionary
-
-<NSString *, NSObject *> *)
-customSignals
-        withCompletion
-:(
-
-void (^_Nullable)(NSError *_Nullable error)
-
-)
-completionHandler
-        NS_REFINED_FOR_SWIFT;
+- (void)setCustomSignals:(nonnull NSDictionary<NSString *, NSObject *> *)customSignals
+          withCompletion:(void (^_Nullable)(NSError *_Nullable error))completionHandler
+    NS_REFINED_FOR_SWIFT;
 
 @end

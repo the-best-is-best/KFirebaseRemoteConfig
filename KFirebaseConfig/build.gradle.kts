@@ -11,7 +11,7 @@ plugins {
 extra["packageNameSpace"] = "io.github.kfirebase_config"
 extra["groupId"] = "io.github.the-best-is-best"
 extra["artifactId"] = "kfirebase-config"
-extra["version"] = "2.1.0"
+extra["version"] = "2.1.1"
 extra["packageName"] = "KFirebaseConfig"
 extra["packageUrl"] = "https://github.com/the-best-is-best/KFirebaseRemoteConfig"
 extra["packageDescription"] =
@@ -190,14 +190,6 @@ kotlin {
                 // dependencies declared in commonMain.
                 api(project.dependencies.platform(libs.firebase.bom)) // استخدم أحدث BOM
                 implementation(libs.firebase.config.ktx)
-            }
-        }
-
-        getByName("androidDeviceTest") {
-            dependencies {
-                implementation(libs.androidx.runner)
-                implementation(libs.androidx.core)
-                implementation(libs.androidx.junit)
             }
         }
 
