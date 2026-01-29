@@ -2,10 +2,10 @@
 
 componentsResources = "1.10.0"
 foundation = "1.10.0"
-kfirebaseCore = "2.1.1"
+kfirebaseCore = "2.1.2"
 kotlin = "2.3.0"
 compose = "1.10.0"
-agp = "8.13.2"
+agp = "9.0.0"
 androidx-activityCompose = "1.12.2"
 #androidx-uiTest = "1.9.3"
 kotlinxCoroutinesCore = "1.10.2"
@@ -19,6 +19,9 @@ maven-publish = "0.36.0"
 firebaseConfig = "22.1.2"
 runtime = "1.10.0"
 uiToolingPreview = "1.10.0"
+
+lifecycleRuntimeCompose = "2.10.0"
+
 [libraries]
 
 androidx-activityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -41,6 +44,8 @@ runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "run
 ui-tooling = { module = "org.jetbrains.compose.ui:ui-tooling", version.ref = "uiToolingPreview" }
 ui-tooling-preview = { module = "org.jetbrains.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreview" }
 
+androidx-lifecycle-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeCompose" }
 [plugins]
 
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
