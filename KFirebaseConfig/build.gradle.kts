@@ -11,7 +11,7 @@ plugins {
 extra["packageNameSpace"] = "io.github.kfirebase_config"
 extra["groupId"] = "io.github.the-best-is-best"
 extra["artifactId"] = "kfirebase-config"
-extra["version"] = "2.1.1"
+extra["version"] = "2.1.2"
 extra["packageName"] = "KFirebaseConfig"
 extra["packageUrl"] = "https://github.com/the-best-is-best/KFirebaseRemoteConfig"
 extra["packageDescription"] =
@@ -82,14 +82,6 @@ kotlin {
         compileSdk = 36
         minSdk = 23
 
-        withHostTestBuilder {
-        }
-
-        withDeviceTestBuilder {
-            sourceSetTreeName = "test"
-        }.configure {
-            instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
     }
 
 // For iOS targets, this is also where you should
